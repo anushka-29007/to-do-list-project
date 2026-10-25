@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>update new task</title>
+</head>
+<body>
+    <%- include('navbar')%> 
+    
+    <div class="container">
+        <h1>update task page</h1>
+        <form class="to-do-form" action="/update/<%= result._id %>" method="post">
+            <input class="textarea" name = "taskheading" value="<%= result.taskheading %>" type="text" placeholder="enter task title" >
+            <br><br>
+            <textarea class ="text" name="description" id="description" rows="10" cols="40"><%= result.description %></textarea>
+            <br><br>
+            <button class="btn"> UPDATE NEW TASK</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,281 @@
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---------- Navbar ---------- */
+nav {
+    background-color: rgb(85, 42, 42);
+    padding: 10px 10px 20px;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0 10px;
+    border-radius: 5px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+}
+
+ul li {
+    display: inline;
+}
+
+li,
+a {
+    color: rgb(234, 201, 201);
+}
+
+li a {
+    text-decoration: none;
+    font-weight: 700;
+    padding: 5px;
+    font-size: 110%;
+    border-radius: 5px;
+}
+
+li a:hover {
+    background-color: rgb(40, 3, 5);
+}
+
+/* ---------- Misc ---------- */
+hr {
+    margin: 0;
+    border: 0;
+    border-top: 2px solid rgb(194, 183, 205); /* was a comma before: fixed */
+}
+
+h1 {
+    margin: 5px;
+    font-weight: 800;
+    color: rgb(91, 40, 44);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    overflow-wrap: anywhere;
+}
+
+/* ---------- Layout ---------- */
+.container {
+    padding-top: 2%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.to-do-form {
+    width: 100%;
+    max-width: clamp(700px, 60vw, 1100px); /* grows on big screens */
+    padding: clamp(16px, 5vw, 70px);
+    margin: 20px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.textarea,
+.text {
+    width: 100%;
+    max-width: 100%;
+    padding: 5px;
+    border: 2.5px solid rgb(212, 189, 189);
+    font-weight: bold;
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
+    font-family: inherit;
+}
+
+.textarea {
+    text-align: center;
+}
+
+.text {
+    min-height: 100px;
+    resize: vertical; /* was "verticle": fixed */
+}
+
+button {
+    padding: 8px 5px;
+    width: 100%;
+    border: 0;
+    border-radius: 4.5px;
+    background-color: rgb(170, 143, 143);
+    font-weight: 600;
+    color: #0d0d0d;
+    cursor: pointer;
+}
+
+/* your HTML had no .btn class on the button, so hover now targets button too */
+button:hover,
+.btn:hover {
+    background-color: rgb(205, 104, 104);
+}
+
+/* ---------- Task list ---------- */
+.data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.data li {
+    color: rgb(99, 13, 13);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    font-weight: 600;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 110%;
+    border-left: 3px solid red;
+    margin: 10px 0;
+    padding: 2% 5%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 100%;
+    max-width: clamp(600px, 60vw, 1100px); /* matches form width on big screens */
+    overflow-wrap: anywhere;
+}
+
+.data li:hover {
+    border-color: rgb(65, 17, 121);
+    box-shadow: 0 4px 20px rgba(64, 38, 194, 0.2);
+    color: rgb(68, 68, 167);
+}
+
+.desc {
+    color: rgb(99, 64, 69);
+}
+
+/* ---------- Action buttons ---------- */
+.buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.deletebt,
+.updatebt {
+    display: inline-block;
+    width: max-content;
+    border: 2px solid brown;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.deletebt {
+    padding: 3px 8px;
+    background-color: rgb(204, 29, 29);
+    color: white;
+}
+
+.updatebt {
+    padding: 3px 8px;
+    background-color: rgb(185, 97, 97);
+    color: black;
+}
+
+.deletebt:hover {
+    background-color: rgb(29, 42, 84);
+}
+
+.updatebt:hover {
+    background-color: rgb(29, 42, 84);
+    color: white;
+}
+
+/* ---------- Large desktop ---------- */
+@media (min-width: 1200px) {
+    .data li {
+        font-size: 125%;
+        padding: 18px 40px;
+    }
+
+    .deletebt,
+    .updatebt {
+        padding: 6px 14px;
+        font-size: 100%;
+    }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px 5px;
+    }
+
+    .to-do-form {
+        margin: 15px auto;
+    }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 480px) {
+    nav {
+        padding-bottom: 12px;
+    }
+
+    nav ul {
+        justify-content: center;
+        gap: 8px 12px;
+    }
+
+    li a {
+        font-size: 100%;
+        display: inline-block;
+        padding: 8px; /* bigger tap target */
+    }
+
+    .container {
+        margin: 5px;
+        padding-top: 4%;
+    }
+
+    .to-do-form {
+        padding: 16px;
+        margin: 10px 0;
+    }
+
+    .data li {
+        font-size: 100%;
+        padding: 12px 14px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .deletebt,
+    .updatebt {
+        width: 100%;
+        padding: 8px;
+        text-align: center;
+    }
+}
+
+/* ---------- Touch devices: no sticky hover ---------- */
+@media (hover: none) {
+    .data li:hover {
+        border-color: red;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        color: rgb(99, 13, 13);
+    }
+}
